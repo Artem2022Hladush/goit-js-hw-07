@@ -35,13 +35,19 @@ function onClickImage(e) {
 	}
 
 	const instance = basicLightbox.create( 		
-`<img src="${e.target.dataset.source}" width="800" height="600">`);
-instance.show((instance) => 'onShow', instance);
+`<img src="${e.target.dataset.source}" width="800" height="600">`,
+{
+	onShow: (instance) => console.log('onShow', instance),
+	onClose: (instance) => console.log('onClose', instance)
+}
+);
+instance.show();
+
 
 
 divRef.addEventListener('keydown', (e) => {
 	if(e.code === 'Escape') {
-		instance.close((instance) => 'onClose', instance);
+		instance.close();
 	};
 	
 })
