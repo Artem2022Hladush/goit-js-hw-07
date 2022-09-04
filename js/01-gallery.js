@@ -37,8 +37,8 @@ function onClickImage(e) {
 	const instance = basicLightbox.create( 		
 `<img src="${e.target.dataset.source}" width="800" height="600">`,
 {
-	onShow: (instance) => console.log('onShow', instance),
-	onClose: (instance) => console.log('onClose', instance)
+	onShow: (instance) => {'onShow', instance},
+	onClose: (instance) => {'onClose', instance}
 }
 );
 instance.show();
