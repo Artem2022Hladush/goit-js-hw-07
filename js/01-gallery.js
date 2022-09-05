@@ -37,22 +37,23 @@ function onClickImage(e) {
 	const instance = basicLightbox.create( 		
 `<img src="${e.target.dataset.source}" width="800" height="600">`,
 {
-	onShow: (instance) => {'onShow', instance},
-	onClose: (instance) => {'onClose', instance}
+	onShow: (instance) => document.addEventListener('keydown', onPressButtonEscape ),
+	onClose: (instance) => document.removeEventListener('keydown', onPressButtonEscape),
 }
 );
 instance.show();
 
-
-
-divRef.addEventListener('keydown', (e) => {
-	if(e.code === 'Escape') {
-		instance.close();
-	};
-	
-})
 }
 
+function onPressButtonEscape() {
+	divRef.addEventListener('keydown', (e) => {
+		if(e.code === 'Escape') {
+			instance.close()
+		};
+		
+	})
+
+}; 
 
 
 // console.log(addGalleryMarkup);
